@@ -27,10 +27,10 @@ async fn handler(headers: Vec<(String, String)>, qry: HashMap<String, Value>, _b
             let temp_max = data.main.temp_max;
             let pressure = data.main.pressure;
             let humidity = data.main.humidity;
-            format!("{city}, weather: {weather}, temperature: {temp}, min temperature: {temp_min}, max temperature: {temp_max}, pressure: {pressure}, humidity: {humidity}")
+            format!("{city}, weather: {weather}, temperature: {temp} °C, min temperature: {temp_min} °C, max temperature: {temp_max} °C, pressure: {pressure}, humidity: {humidity}")
         })
     } else {
-        Err("no city provided".to_string())
+        Err("No city provided".to_string())
     };
 
     let return_headers = vec![(String::from("content-type"), String::from("text/html"))];
