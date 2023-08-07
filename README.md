@@ -1,22 +1,16 @@
-# Getting started with a simple flow function
+# Simple Weather Flow
 
-This flow function exposes a HTTP endpoint. You can submit any data to the endpoint via HTTP POST and the flow function will echo it back to you in the HTTP response.
+- This flow returns weather data by city name by calling API from OpenWeatherMap.
+- This flow requires an `OpenWeatherMap API Key` environment variable setup in `flows.network` console and use `http_req_wasi` to send the request to OpenWeatherMap API and deserializes the response with `serde`
 
-1. Fork this repo into your own GitHub account.
-2. Go to [Flows.network](https://flows.network/flow/new) to create a new flow.
-3. Import the forked repo from your account into flows.network.
-4. Build and deploy.
-5. You will now get a URL endpoint to access the flow function. It is under the *Lambda Endpoint* section on the flows.network web site. You can test it as follows.
+- You can search by input a city name in the query. See `Usage` below.
 
-The example below shows how to query a flow function we have already deployed.
-You can type the following URL into any browser's address bar:
+## Lambda Endpoint
+- https://code.flows.network/lambda/fKSpCCGHvw
 
-```
-https://code.flows.network/lambda/j4DPFGufPr?msg=I+am+a+Rustacean
-```
+## Usage
+```bash
+curl 'https://code.flows.network/lambda/fKSpCCGHvw?city=new+york'
 
-Or, you can use the `curl` command to access the flow function.
-
-```
-curl https://code.flows.network/lambda/j4DPFGufPr?msg=I+am+a+Rustacean
+# new york, weather: Clouds, temperature: 20.97 °C, min temperature: 19.78 °C, max temperature: 21.98 °C, pressure: 1013, humidity: 88
 ```
